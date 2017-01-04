@@ -10,7 +10,8 @@
     "copy:package": "cpx \"package.json\" \"./dist/.\"",
     "compile": "tsc --noEmit -p src",
     "test": "ng test --single-run",
-    "test:w": "ng test"
+    "test:w": "ng test",
+    "lint": "tslint -c \"../app/tslint.json\" \"src/**/*.ts\""
   },
   "keywords": [
     "flexxbizz",

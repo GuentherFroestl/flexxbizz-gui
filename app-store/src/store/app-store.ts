@@ -3,49 +3,49 @@
  */
 import {Injectable} from '@angular/core';
 import {Observable, BehaviorSubject} from 'rxjs';
-import {ActivityState} from "../service-activity/state";
+import {ActivityState} from '../service-activity/state';
 import {DevToolsExtension, NgRedux} from 'ng2-redux';
 import {combineReducers, StoreEnhancer} from 'redux';
 import {EpicMiddleware, Epic, createEpicMiddleware, combineEpics} from 'redux-observable';
-import {AppAction} from "./app-action";
-import {UserActions} from "../user/actions";
-import {ActivityActions} from "../service-activity/actions";
-import {ErrorActions} from "../error/actions";
-import {appState, INITIAL_STATE} from "./state";
-import {userReducer} from "../user/reducer";
-import {errorReducer} from "../error/reducer";
-import {activityReducer} from "../service-activity/reducer";
-import {UserState} from "../user/state";
-import {ErrorState} from "../error/state";
+import {AppAction} from './app-action';
+import {UserActions} from '../user/actions';
+import {ActivityActions} from '../service-activity/actions';
+import {ErrorActions} from '../error/actions';
+import {AppState, INITIAL_STATE} from './state';
+import {userReducer} from '../user/reducer';
+import {errorReducer} from '../error/reducer';
+import {activityReducer} from '../service-activity/reducer';
+import {UserState} from '../user/state';
+import {ErrorState} from '../error/state';
 
 
 @Injectable()
-export class appStore {
+export class AppStore {
 
     userActions: UserActions;
     errorActions: ErrorActions;
     activityActions: ActivityActions;
     epicMiddleware: EpicMiddleware<any>;
 
-    private store: NgRedux<appState>;
+    private store: NgRedux<AppState>;
     private epicRegistry: Epic<any>[] = [];
     private epic$: BehaviorSubject<Epic<any>>;
 
     constructor() {
-        this.store = new NgRedux<appState>();
+        this.store = new NgRedux<AppState>();
         this.userActions = new UserActions(this);
         this.errorActions = new ErrorActions(this);
         this.activityActions = new ActivityActions(this);
 
         // handle devtools
-        let enhancers: StoreEnhancer<appState>[] = [];
+        let enhancers: StoreEnhancer<AppState>[] = [];
         let devTools = new DevToolsExtension(null, this.store);
         if (devTools.isEnabled()) {
             enhancers.push(devTools.enhancer());
         }
 
         // handle reducers
-        let globalReducers = combineReducers<appState>({
+        let globalReducers = combineReducers<AppState>({
             user: userReducer,
             error: errorReducer,
             activity: activityReducer
@@ -96,17 +96,17 @@ export class appStore {
 
     // User Store Observable
     selectUserState(): Observable<UserState> {
-        return this.store.select((s: appState) => s.user);
+        return this.store.select((s: AppState) => s.user);
     }
 
     // Activity Store Observable
     selectActivityState(): Observable<ActivityState> {
-        return this.store.select((s: appState) => s.activity);
+        return this.store.select((s: AppState) => s.activity);
     }
 
     // Error Store Observable
     selectErrorState(): Observable<ErrorState> {
-        return this.store.select((s: appState) => s.error);
+        return this.store.select((s: AppState) => s.error);
     }
 
 }

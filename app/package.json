@@ -4,7 +4,10 @@
   "description": "Frontend Application for tetraflex",
   "main": "index.js",
   "scripts": {
-    "test": "ng test"
+    "compile": "tsc --noEmit",
+    "test": "ng test --single-run",
+    "test:w": "ng test",
+    "lint": "tslint \"src/**/*.ts\""
   },
   "keywords": [
     "flexbizz",

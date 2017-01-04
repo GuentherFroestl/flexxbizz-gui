@@ -1,7 +1,7 @@
 /**
  * Created by gfr on 04.01.17.
  */
-import {appStore} from '../store/app-store';
+import {AppStore} from '../store/app-store';
 import {UserState} from './state';
 
 
@@ -13,7 +13,7 @@ export class UserActions {
     static readonly AUTH_TOKEN_CLEAR = 'USER_AUTH_TOKEN_CLEAR';
     static readonly TENANT_ID_SET = 'USER_TENANT_ID_SET';
 
-    constructor(private store: appStore) {
+    constructor(private store: AppStore) {
     }
 
     setUser(user: UserState): void {

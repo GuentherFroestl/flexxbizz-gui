@@ -1,15 +1,15 @@
 /**
  * Created by gfr on 04.01.17.
  */
-import { appStore } from '../store/app-store';
-import {AppError} from "./state";
+import { AppStore } from '../store/app-store';
+import {AppError} from './state';
 
 export class ErrorActions {
     static readonly ERROR_ADD = 'ERROR_ADD';
     static readonly ERROR_CLEAR = 'ERROR_CLEAR';
     static readonly ERROR_TAIL = 'ERROR_TAIL';
 
-    constructor(private store: appStore) {
+    constructor(private store: AppStore) {
     }
 
     addError(error: AppError): void {

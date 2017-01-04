@@ -5,7 +5,7 @@
   "main": "main.ts",
   "scripts": {
     "test": "ng test",
-    "lint": "tslint \"src/**/*.ts\""
+    "lint": "tslint -c \"../app/tslint.json\" \"src/**/*.ts\""
   },
   "keywords": [
     "tetraflex",
