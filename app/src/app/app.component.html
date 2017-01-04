@@ -1,0 +1,25 @@
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="over">
+    <md-list>
+      <h2>Flexxbizz App</h2>
+      <md-divider></md-divider>
+      <h3><md-icon class="margin-right-5">person</md-icon>Contacts</h3>
+      <md-list-item><a md-button routerLink="."><md-icon class="margin-right-5">list</md-icon>Contacts List</a></md-list-item>
+      <md-list-item><a md-button routerLink="."><md-icon class="margin-right-5">phone</md-icon>Phone Numbers</a></md-list-item>
+      <md-list-item><a md-button routerLink="."><md-icon class="margin-right-5">mail</md-icon>Email Addresses</a></md-list-item>
+      <md-divider></md-divider>
+      <h3><md-icon class="margin-right-5">place</md-icon>Addresses</h3>
+      <md-list-item><a md-button routerLink="."><md-icon class="margin-right-5">list</md-icon>Address List</a></md-list-item>
+    </md-list>
+  </md-sidenav>
+  <div class="my-content">
+<md-card>
+      <md-icon class="clickable md-primary" (click)="sidenav.open()">menu</md-icon>
+</md-card>
+    <div class="md-progress-bar-height">
+    <md-progress-bar *ngIf="false" mode="indeterminate"></md-progress-bar>
+    </div>
+
+  </div>
+
+</md-sidenav-container>
