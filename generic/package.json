@@ -1,0 +1,50 @@
+{
+  "name": "@flexxbizz/generic",
+  "version": "0.0.1",
+  "description": "Generic domain definitions for flexxbizz",
+  "main": "index.ts",
+  "scripts": {
+    "clean": "rimraf \"./dist\"",
+    "build": "tsc -p src",
+    "build:dist" : "npm run clean && npm run build && npm run copy:package",
+    "build:services" : "npm run build:dist && cpx \"./dist/**/*.*\" ../../../flexxbizz-services/node_modules/@flexxbizz/generic",
+    "build:app" : "npm run build:dist && cpx \"./dist/**/*.*\" ../app/node_modules/@flexxbizz/generic",
+    "copy:package": "cpx \"package.json\" \"./dist/.\"",
+    "compile": "tsc --noEmit -p src",
+    "test": "ng test --single-run",
+    "test:w": "ng test",
+    "lint": "tslint -c \"../app/tslint.json\" \"src/**/*.ts\""
+  },
+  "keywords": [
+    "flexxbizz",
+    "business",
+    "services",
+    "generic",
+    "domain",
+    "model"
+  ],
+  "author": "Guenther Froestl",
+  "license": "MIT",
+  "devDependencies": {
+    "@angular/compiler-cli": "^2.3.1",
+    "angular-cli": "1.0.0-beta.24",
+    "codelyzer": "~2.0.0-beta.1",
+    "@types/hammerjs": "^2.0.34",
+    "@types/jasmine": "^2.5.36",
+    "@types/node": "^6.0.46",
+    "canonical-path": "0.0.2",
+    "concurrently": "^3.1.0",
+    "http-server": "^0.9.0",
+    "jasmine-core": "2.5.2",
+    "jasmine-spec-reporter": "2.5.0",
+    "karma": "1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-remap-istanbul": "^0.2.1",
+    "protractor": "~4.0.13",
+    "ts-node": "1.2.1",
+    "tslint": "^4.0.2",
+    "typescript": "~2.1.0"
+  }
+}
